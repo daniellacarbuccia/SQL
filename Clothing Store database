@@ -1,0 +1,25 @@
+--Created database for a clothing store
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, name TEXT, price INTEGER, quantity INTEGER, size TEXT);
+INSERT INTO clothing VALUES
+(1, 'hat', 10.00, 30, 'M'),
+(2, 'glasses', 8.00, 20, 'S'),
+(3, 'Tshirt', 10.00, 50, 'L'),
+(4, 'Blouse', 12.00, 40, 'S'),
+(5, 'Tank top', 9.00, 25, 'M'),
+(6, 'shorts', 15.00, 34, 'M'),
+(7, 'skirt', 20.00, 40, 'L'),
+(8, 'jeans', 25.00, 45, 'M'),
+(9, 'mini dress', 30.00, 44, 'S'),
+(10, 'midi dress', 35.00, 48, 'M'),
+(11, 'maxi dress', 40.00, 50, 'L'),
+(12, 'socks', 5.00, 30, 'M'),
+(13, 'midi skirt', 15.00, 40, 'S'),
+(14, 'maxi skirt', 20.00, 50, 'M'),
+(15, 'belt', 10.00, 20, 'L');
+
+--Selected price specifically to order it by ascending amount
+SELECT price FROM clothing
+ORDER BY price ASC;
+
+--Displayed highest price out of clothing items
+SELECT MAX(price) FROM clothing
