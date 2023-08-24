@@ -1,0 +1,39 @@
+/** In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists. **/
+
+CREATE TABLE famousauthors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    age INTEGER,
+    nationality TEXT,
+    networth_millions INTEGER
+);
+
+INSERT INTO famousauthors VALUES (1, 'Stephen King', 75, 'American', 500.0);
+INSERT INTO famousauthors VALUES (2, 'J.K. Rowling', 58, 'British', 820.0);
+INSERT INTO famousauthors VALUES (3, 'Stephanie Meyer', 49, 'American', 120.0);
+INSERT INTO famousauthors VALUES (4, 'Nicholas Sparks', 57, 'American', 40.0);
+INSERT INTO famousauthors VALUES (5, 'Margaret Atwood', 83, 'Canadian', 20.0);
+
+CREATE TABLE bestsellingbook (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    yearpublished INTEGER,
+    author_name TEXT,
+    bookssoldworldwide_millions INTEGER
+);
+
+INSERT INTO bestsellingbook VALUES (1, 'IT', 1986, 'Stephen King', 350);
+INSERT INTO bestsellingbook VALUES (2, 'Harry Potter and the Philosopher''s Stone', 1997, 'J.K. Rowling', 600);
+INSERT INTO bestsellingbook VALUES (3, 'Twilight', 2005, 'Stephanie Meyer', 250);
+INSERT INTO bestsellingbook VALUES (4, 'The Notebook', 1996, 'Nicholas Sparks', 105);
+INSERT INTO bestsellingbook VALUES (5, 'The Handmaid''s Tale', 1985, 'Margaret Atwood', 8);
+
+/** combined networth and number of copies sold worldwide into one table **/
+SELECT famousauthors.name AS author_name, famousauthors.networth_millions, bestsellingbook.bookssoldworldwide_millions
+FROM famousauthors
+JOIN bestsellingbook ON famousauthors.name = bestsellingbook.author_name;
+
+/** combined name, and age with best selling book title associated with them **/
+SELECT famousauthors.name AS author_name, famousauthors.age, bestsellingbook.title AS best_selling_book
+FROM famousauthors
+JOIN bestsellingbook ON famousauthors.name = bestsellingbook.author_name;
